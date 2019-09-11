@@ -3,15 +3,12 @@ import List from './components/List';
 import Input from './components/Input';
 import uuid from 'uuid';
 class App extends Component {
-  
-    state = {
-      items:[],
-        id:uuid(),
-        item:"",
-        editItem:false
-    }
-  
-
+  state = {
+    items:[],
+    id:uuid(),
+    item:"",
+    editItem:false
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     const newItemfrominput = {
@@ -41,24 +38,23 @@ class App extends Component {
     console.log("Edit data");
   }
   render() {
-  return (
-      <div className="container">
-        <h2 align="center">TODO Application</h2>
-        <div className="row">
-          <Input 
-          item={this.state.item}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          editItem={this.state.editItem}
-          
-          />
+    return (
+        <div className="container">
+          <h2 align="center">TODO Application</h2>
+          <div className="row">
+            <Input 
+            item={this.state.item}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+            editItem={this.state.editItem}
+            />
+          </div>
+            <List 
+            items={this.state.items}
+            handleDelete={this.state.handleDelete}
+            handleEdit={this.state.handleEdit}
+            />
         </div>
-          <List 
-          items={this.state.items}
-          handleDelete={this.state.handleDelete}
-          handleEdit={this.state.handleEdit}
-          />
-      </div>
     );
   }
 }
