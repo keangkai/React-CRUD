@@ -55,8 +55,8 @@ class App extends Component {
         </div>
           <List 
           items={this.state.items}
-          handleDelete={this.state.handleDelete}
-          handleEdit={this.state.handleEdit}
+          handleDelete={this.handleDelete}
+          handleEdit={this.handleEdit}
           />
       </div>
     );
