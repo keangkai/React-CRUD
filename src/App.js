@@ -28,17 +28,28 @@ class App extends Component {
       item: e.target.value
     })
   }
-  clearList = () => {
-    console.log("Clear data");
-  }
-  handleDelete = (id) => {
-    console.log("Remove data", id);
+  clearList = (e) => {
     this.setState({
-      items: this.state.items.filter(item => item.id !== id)
+      items: []
     })
   }
+  handleDelete = (id) => {
+    const filterItems = this.state.items.filter(item =>item.id !== id)
+    this.setState({
+      items:filterItems
+    })
+    // console.log(id);
+  }
   handleEdit = (id) => {
-    console.log("Edit data", id);
+    // console.log("Edit data", id);
+    const filterItems = this.state.items.filter(item => item.id !== id)
+    const selectItems = this.state.items.find(item=>item.id === id)
+    this.setState({
+      items:filterItems,
+      item:selectItems.name,
+      id:id,
+      editItem:true,
+    })
   }
   render() {
     return (
@@ -50,12 +61,14 @@ class App extends Component {
               handleSubmit={this.handleSubmit}
               handleChange={this.handleChange}
               editItem={this.state.editItem}
+              clearList={this.clearList}
             />
           </div>
             <List 
               items={this.state.items}
               handleDelete={this.handleDelete}
               handleEdit={this.handleEdit}
+              clearList={this.clearList}
             />
         </div>
     );

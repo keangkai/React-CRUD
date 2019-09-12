@@ -11,7 +11,7 @@ export default class Input extends Component {
                         <label>Todo</label>
                         <input type="text" className="form-control" value={item} onChange={handleChange}/>
                     </div>
-                        <input type="submit" className="btn btn-primary" value="ADD"/>    
+                        <input disabled={item?false:true}  type="submit" className={editItem?"btn btn-primary":"btn btn-success"}value={editItem?"Edit item":"Add"}/>    
                 </form>
             </div>
         )
